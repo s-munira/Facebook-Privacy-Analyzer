@@ -1,19 +1,17 @@
 <?php
 
-$string = file_get_contents("where_you're_logged_in.json");
-$character=json_decode($string);
-$obj=( $character->active_sessions);
-$locations=array();
-for($i=0;$i<sizeof($obj);$i=$i+1){
-    $deviceLocation=$obj[$i]->location;
-    array_push($locations,$deviceLocation);
-//    array_push($)
+    $string = file_get_contents("where_you're_logged_in.json");
+    $character=json_decode($string);
+    $obj=( $character->active_sessions);
+    $locations=array();
+    for($i=0;$i<sizeof($obj);$i=$i+1){
+        $deviceLocation=$obj[$i]->location;
+        array_push($locations,$deviceLocation);
+    }
 
-}
-
-$counted = array_count_values($locations);
-arsort($counted);
-$keys = array_keys($counted);
+    $counted = array_count_values($locations);
+    arsort($counted);
+    $keys = array_keys($counted);
 
 ?>
 <html>
@@ -58,7 +56,7 @@ $keys = array_keys($counted);
 </head>
 
 <body>
-<!--Div that will hold the line chart-->
-<div id="chart_div"></div>
+    <!--Div that will hold the line chart-->
+    <div id="chart_div"></div>
 </body>
 </html>
